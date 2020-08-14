@@ -5,8 +5,8 @@ import {colors, showError, storeData, useForm, getData} from '../../utils';
 
 const Login = ({navigation}) => {
   const [form, setForm] = useForm({
-    email: 'ramdhandendy@gmail.com',
-    password: 'globaltrendasia',
+    email: '',
+    password: '',
   });
   const [loading, setLoading] = useState(false);
 
