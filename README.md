@@ -11,6 +11,7 @@
 > install all library first
 
 ```shell
+$ cd web-service
 $ yarn
 ```
 
