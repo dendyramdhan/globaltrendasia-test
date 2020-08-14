@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors} from '../../utils';
 
-const Button = ({type, title, onPress, icon, disable}) => {
+const Button = ({type, title, onPress, disable}) => {
   if (disable) {
     return (
       <View style={styles.disableBg}>

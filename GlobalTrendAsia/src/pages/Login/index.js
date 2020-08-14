@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Button, Gap, Input, Loading} from '../../components';
 import {colors, showError, storeData, useForm, getData} from '../../utils';
-import AsyncStorage from '@react-native-community/async-storage';
 
 const Login = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -11,7 +10,6 @@ const Login = ({navigation}) => {
   });
   const [loading, setLoading] = useState(false);
 
-  // AsyncStorage.clear();
   useEffect(() => {
     getData('user').then((user) => {
       if (user) {
@@ -45,13 +43,13 @@ const Login = ({navigation}) => {
         });
       })
       .then((user) => {
-        storeData('user', user);
+        storeData('user', {email: form.email, password: form.password});
         setLoading(false);
         navigation.replace('Success');
       })
-      .catch((err) => {
+      .catch((error) => {
         setLoading(false);
-        navigation.replace('Failed', err);
+        navigation.navigate('Failed', error);
       });
   };
 
@@ -74,7 +72,7 @@ const Login = ({navigation}) => {
             secureTextEntry
           />
           <Gap height={40} />
-          <Button title="Sign In" onPress={login} />
+          <Button title="Log In" onPress={login} />
           <Gap height={30} />
         </ScrollView>
       </View>

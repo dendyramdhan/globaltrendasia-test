@@ -18,3 +18,14 @@ export const getData = async (key) => {
     // error reading value
   }
 };
+
+export const clearData = async () => {
+  try {
+    const value = await AsyncStorage.clear();
+    if (value !== null) {
+      return JSON.parse(value);
+    }
+  } catch (e) {
+    // error reading value
+  }
+};
