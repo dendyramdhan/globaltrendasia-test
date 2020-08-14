@@ -6,7 +6,7 @@
 
 - Clone this repo to your local machine using `https://github.com/dendyramdhan/globaltrendasia-test.git`
 
-### Setup
+### Setup Web Service
 
 > install all library first
 
@@ -26,4 +26,19 @@ $ yarn seed
 
 ```shell
 $ yarn start
+```
+
+### Setup Android App
+
+> install all library first
+
+```shell
+$ cd GlobalTrendAsia
+$ yarn
+```
+
+> run android app
+
+```shell
+$ yarn android
 ```
