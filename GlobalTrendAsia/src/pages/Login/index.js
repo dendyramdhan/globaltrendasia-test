@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Button, Gap, Input, Loading} from '../../components';
-import {colors, storeData, useForm, getData} from '../../utils';
+import {useNetInfo} from '@react-native-community/netinfo';
+import {Button, Gap, Input, Loading, Offline} from '../../components';
+import {colors, storeData, useForm, getData, showError} from '../../utils';
 
 const Login = ({navigation}) => {
+  const netInfo = useNetInfo();
+
   const [form, setForm] = useForm({
     email: '',
     password: '',
@@ -20,6 +23,13 @@ const Login = ({navigation}) => {
 
   const login = async () => {
     setLoading(true);
+
+    if (!form.email || !form.password) {
+      setLoading(false);
+      showError('Email dan password wajib diisi!');
+      return;
+    }
+
     const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -56,6 +66,7 @@ const Login = ({navigation}) => {
   return (
     <>
       <View style={styles.page}>
+        {!netInfo.isConnected && <Offline />}
         <ScrollView showsVerticalScrollIndicator={false}>
           <Gap height={40} />
           <Text style={styles.title}>Silahkan Login</Text>

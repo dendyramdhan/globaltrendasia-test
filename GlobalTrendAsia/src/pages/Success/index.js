@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {getData, clearData} from '../../utils';
-import AsyncStorage from '@react-native-community/async-storage';
-import {Button, Gap} from '../../components';
+import {useNetInfo} from '@react-native-community/netinfo';
+import {Button, Gap, Offline} from '../../components';
 
 export default function Success({navigation}) {
+  const netInfo = useNetInfo();
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function Success({navigation}) {
 
   return (
     <View style={styles.page}>
+      {!netInfo.isConnected && <Offline />}
       <Text style={styles.title}>Welcome</Text>
       {user && <Text style={styles.subTitle}>{user.email}</Text>}
       <Gap height={40} />

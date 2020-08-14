@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {getData, clearData} from '../../utils';
-import AsyncStorage from '@react-native-community/async-storage';
-import {Button, Gap} from '../../components';
+import {clearData} from '../../utils';
+import {useNetInfo} from '@react-native-community/netinfo';
+import {Button, Gap, Offline} from '../../components';
 
 export default function Failed({navigation, route}) {
+  const netInfo = useNetInfo();
   const error = route.params;
 
   const back = async () => {
@@ -14,6 +15,7 @@ export default function Failed({navigation, route}) {
 
   return (
     <View style={styles.page}>
+      {!netInfo.isConnected && <Offline />}
       <Text style={styles.title}>Login Failed</Text>
       {error && <Text style={styles.subTitle}>{error}</Text>}
       <Gap height={40} />
