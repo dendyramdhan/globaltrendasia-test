@@ -1,0 +1,8 @@
+{
+  "name": "web-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dendyramdhan/globaltrendasia-test.git",
+  "author": "Dendy Ramdhan",
+  "license": "MIT"
+}
