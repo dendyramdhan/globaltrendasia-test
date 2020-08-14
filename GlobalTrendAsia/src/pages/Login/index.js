@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Button, Gap, Input, Loading} from '../../components';
-import {colors, showError, storeData, useForm, getData} from '../../utils';
+import {colors, storeData, useForm, getData} from '../../utils';
 
 const Login = ({navigation}) => {
   const [form, setForm] = useForm({
