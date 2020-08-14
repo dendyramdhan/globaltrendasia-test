@@ -1,0 +1,1 @@
+# globaltrendasia-test
